@@ -22,8 +22,7 @@
                 <hr>
             </div>
             @auth
-            <form method="POST" class="m-3 align-items-end">
-                @csrf
+            <form method="POST" action="{{route('carts.store')}}" class="m-3 align-items-end">                @csrf
                 <input type="hidden" name="id" value="{{$product->id}}">
                 <input type="hidden" name="name" value="{{$product->name}}">
                 <input type="hidden" name="price" value="{{$product->price}}">
@@ -42,15 +41,19 @@
                         </button>
                     </div>
                     @if(Auth::user()->favorite_products()->where('product_id', $product->id)->exists())
+                    <div class="col-5">
                         <a href="{{ route('favorites.destroy', $product->id) }}" class="btn samuraimart-favorite-button text-favorite w-100" onclick="event.preventDefault(); document.getElementById('favorites-destroy-form').submit();">
                             <i class="fa fa-heart"></i>
                             お気に入り解除
                         </a>
+                    </div>
                     @else
+                    <div class="col-5">
                         <a href="{{ route('favorites.store', $product->id) }}" class="btn samuraimart-favorite-button text-favorite w-100" onclick="event.preventDefault(); document.getElementById('favorites-store-form').submit();">
                             <i class="fa fa-heart"></i>
                             お気に入り
                         </a>
+                    </div>
                     @endif
                 </div>
             </form>

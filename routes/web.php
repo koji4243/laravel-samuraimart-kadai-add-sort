@@ -6,6 +6,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CartController;
 
 
 /*
@@ -42,11 +43,18 @@ require __DIR__.'/auth.php';
 
     Route::post('favorites/{product_id}', [FavoriteController::class, 'store'])->name('favorites.store');
     Route::delete('favorites/{product_id}', [FavoriteController::class, 'destroy'])->name('favorites.destroy');
-// });
+
     Route::controller(UserController::class)->group(function () {
         Route::get('users/mypage', 'mypage')->name('mypage');
         Route::get('users/mypage/edit', 'edit')->name('mypage.edit');
         Route::put('users/mypage', 'update')->name('mypage.update');
         Route::get('users/mypage/password/edit', 'edit_password')->name('mypage.edit_password');
         Route::put('users/mypage/password', 'update_password')->name('mypage.update_password');  
+        Route::get('users/mypage/favorite', 'favorite')->name('mypage.favorite');
     });
+        Route::controller(CartController::class)->group(function () {
+        Route::get('users/carts', 'index')->name('carts.index');    Route::post('users/carts', 'store')->name('carts.store');
+        Route::post('users/carts', 'store')->name('carts.store');
+        Route::delete('users/carts', 'destroy')->name('carts.destroy');
+    });
+// });

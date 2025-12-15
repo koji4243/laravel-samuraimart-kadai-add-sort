@@ -48,7 +48,7 @@ class UserController extends Controller
     {
         return view('users.edit_password');
     }
-        public function update_password(Request $request)
+    public function update_password(Request $request)
     {
         $validatedData = $request->validate([
             'password' => 'required|confirmed',
@@ -62,5 +62,13 @@ class UserController extends Controller
             return to_route('mypage.edit_password');
         }
         return to_route('mypage');
+        
+    }
+    public function favorite()
+    {
+        $user = Auth::user();
+        $favorite_products = $user->favorite_products;
+        
+        return view('users.favorite', compact('favorite_products'));
     }
 }
