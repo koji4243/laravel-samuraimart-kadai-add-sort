@@ -20,14 +20,18 @@
             Sort By
             @sortablelink('id', 'ID')
             @sortablelink('price', 'Price')
-            @sortablelink('create_at', '作成日時')
+            @sortablelink('create_at', 'Create_At')
         </div>
         <div class="container mt-4">
             <div class="row w-100">
                 @foreach($products as $product)
                 <div class="col-3">
                     <a href="{{route('products.show', $product)}}">
-                        <img src="{{ asset('img/dummy.png')}}" class="img-thumbnail">
+                        @if ($product->image !== "")
+                            <img src="{{ asset($product->image) }}" class="img-thumbnail">
+                        @else
+                            <img src="{{ asset('img/dummy.png')}}" class="img-thumbnail">
+                        @endif
                     </a>
                     <div class="row">
                         <div class="col-12">
