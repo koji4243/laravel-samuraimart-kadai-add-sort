@@ -46,5 +46,6 @@ require __DIR__.'/auth.php';
         Route::get('users/carts', 'index')->name('carts.index');    Route::post('users/carts', 'store')->name('carts.store');
         Route::post('users/carts', 'store')->name('carts.store');
         Route::delete('users/carts', 'destroy')->name('carts.destroy');
+        Route::delete('users/mypage/delete', 'destroy')->name('mypage.destroy');
     });
 // });
