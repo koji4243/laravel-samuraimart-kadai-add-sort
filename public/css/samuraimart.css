@@ -188,14 +188,19 @@ td {
     display: inline-block;
     font-size: 24px;
     line-height: 1;
+    width: 5em;
+    height: 1em;
 }
-
 /* 背面：灰色の星 */
 .stars-rating::before {
     content: "★★★★★";
     color: #ccc;
 }
-
+.score {
+    position: absolute;
+    top: 135px;
+    right: 472px;
+}
 /* 前面：緑色の星 */
 .stars-rating::after {
     content: "★★★★★";

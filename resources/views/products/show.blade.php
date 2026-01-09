@@ -20,12 +20,11 @@
                 @php 
                     $avg = round($reviews->avg('score') * 2) / 2
                 @endphp
-                <pre>{{ $avg }}</pre>
                 <span
                     class="stars-rating"
                     data-rate="{{ $avg }}">
                 </span>
-                <span>{{ number_format($reviews->avg('score'), 1) }}</span><br>
+                <span class="score">{{ number_format($reviews->avg('score'), 1) }}</span><br>
 
                 <p class="">
                     {{$product->description}}
@@ -87,6 +86,15 @@
         <div class="offset-1 col-11">
             <hr class="w-100">
             <h3 class="float-left">カスタマーレビュー</h3>
+
+            @php 
+                $avg = round($reviews->avg('score') * 2) / 2
+            @endphp
+            <span
+                class="stars-rating"
+                data-rate="{{ $avg }}">
+            </span>
+            <span>{{ number_format($reviews->avg('score'), 1) }}</span><br>
         </div>
 
         <div class="offset-1 col-10">
